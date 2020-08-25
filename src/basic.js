@@ -5,7 +5,7 @@ function Todo(state = { name: "muneeb" }, action) {
     case "ADD TODO":
       return {
         ...state,
-        text: "TODO ADDED",
+        text: "TODO  ",
       };
     case "DELETE TODO":
       return {

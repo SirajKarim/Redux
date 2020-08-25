@@ -4,12 +4,19 @@ import "./App.css";
 import { connect } from "react-redux";
 import store from "./basic";
 
+function UpdateTodo() {
+  return {
+    type: "ADD TODO",
+  };
+}
+
 class App extends Component {
   componentDidMount() {
     console.log(this.props);
-    store.dispatch({
-      type: "ADD TODO",
-    });
+    // store.dispatch({
+    //   type: "ADD TODO",
+    // });
+    this.props.UpdateTodo();
   }
   componentWillReceiveProps(nextProps) {
     console.log("ComponentWillRecieveProps", nextProps);
@@ -28,4 +35,8 @@ function mapStatetoProps(state) {
     Todo: state.Todo.text,
   };
 }
-export default connect(mapStatetoProps, null)(App);
+
+function mapDispatchtoProps(dispatch) {
+  return { UpdateTodo: (data) => dispatch(UpdateTodo(data)) };
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(App);
